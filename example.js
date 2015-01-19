@@ -29,3 +29,6 @@ try {
   s = e.toString();
 }
 console.log('bignumJSON.parse(testBogusInt): ' + s);
+
+s = bignumJSON.parse('{"test-NaN":NaN}');
+console.log('bignumJSON.parse(nan): ', s);
