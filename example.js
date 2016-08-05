@@ -10,7 +10,7 @@ console.log('\ntestInteger:                   ' + testInteger);
 console.log('JSON.parse(testInteger):       ' + JSON.stringify(JSON.parse(testInteger)));
 console.log('bignumJSON.parse(testInteger): ' + bignumJSON.stringify(bignumJSON.parse(testInteger)));
 
-var testBogusInt = '{"hello":8.}'
+var testBogusInt = '{"hello":8.}';
 console.log('\ntestBogusInt:                  ' + testBogusInt);
 
 var s;
@@ -32,3 +32,22 @@ console.log('bignumJSON.parse(testBogusInt): ' + s);
 
 s = bignumJSON.parse('{"test-NaN":NaN}');
 console.log('bignumJSON.parse(nan): ', s);
+
+var test0Padding = '{"hello":00}';
+console.log('\ntest0Padding:                  ' + test0Padding);
+
+try {
+  s = JSON.stringify(JSON.parse(test0Padding));
+} catch (e) {
+  console.log(e);
+  s = e.toString();
+}
+console.log('JSON.parse(test0Padding):       ' +  s);
+
+try {
+  s = bignumJSON.stringify(bignumJSON.parse(test0Padding, undefined, true, true));
+} catch (e) {
+  console.log(e);
+  s = e.toString();
+}
+console.log('bignumJSON.parse(test0Padding):       ' +  s);
